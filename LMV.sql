@@ -31,13 +31,13 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom_clt` varchar(50) NOT NULL,
-  `prenom_clt` varchar(50) NOT NULL,
-  `mail_clt` varchar(50) NOT NULL,
-  `adresse` varchar(50) NOT NULL,
-  `cp` int NOT NULL,
-  `ville` varchar(50) NOT NULL,
+  `prenom_clt` varchar(50) DEFAULT NULL,
+  `mail_clt` varchar(50) DEFAULT NULL,
+  `adresse` varchar(50) DEFAULT NULL,
+  `cp` int DEFAULT NULL,
+  `ville` varchar(50) DEFAULT NULL,
   `pts_fidelite` int DEFAULT NULL,
-  `mdp` varchar(50) NOT NULL,
+  `mdp` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail_clt` (`mail_clt`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -51,11 +51,11 @@ CREATE TABLE IF NOT EXISTS `client` (
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `numero_com` int NOT NULL AUTO_INCREMENT,
-  `id_clt` int NOT NULL,
-  `date_commande` date NOT NULL,
+  `id_clt` int DEFAULT NULL,
+  `date_commande` date DEFAULT NULL,
   `id_liste_pdt` int DEFAULT NULL,
-  `total_ht` decimal(15,2) NOT NULL,
-  `total_tva` decimal(15,2) NOT NULL,
+  `total_ht` decimal(15,2) DEFAULT NULL,
+  `total_tva` decimal(15,2) DEFAULT NULL,
   `etat` tinyint(1) DEFAULT NULL,
   `id` int NOT NULL,
   PRIMARY KEY (`numero_com`),
@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS `commande_produit` (
 DROP TABLE IF EXISTS `motifs`;
 CREATE TABLE IF NOT EXISTS `motifs` (
   `id_mtf` int NOT NULL AUTO_INCREMENT,
-  `nom_mtf` varchar(50) NOT NULL,
-  `image` varchar(50) NOT NULL,
+  `nom_mtf` varchar(50) DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_mtf`),
   UNIQUE KEY `nom_mtf` (`nom_mtf`),
   UNIQUE KEY `image` (`image`)
@@ -103,16 +103,16 @@ DROP TABLE IF EXISTS `produits`;
 CREATE TABLE IF NOT EXISTS `produits` (
   `id_pdt` int NOT NULL AUTO_INCREMENT,
   `nom_pdt` varchar(50) DEFAULT NULL,
-  `genre` varchar(1) NOT NULL,
-  `id_taille` varchar(3) NOT NULL,
-  `id_motif` int NOT NULL,
+  `genre` varchar(1) DEFAULT NULL,
+  `id_taille` varchar(3) DEFAULT NULL,
+  `id_motif` int DEFAULT NULL,
   `id_type` int DEFAULT NULL,
   `prix_pdt` decimal(15,2) DEFAULT NULL,
   `stock_pdt` int DEFAULT NULL,
-  `image` varchar(50) NOT NULL,
-  `id_taille_1` int NOT NULL,
-  `id_type_1` int NOT NULL,
-  `id_mtf` int NOT NULL,
+  `image` varchar(50) DEFAULT NULL,
+  `id_taille_1` int DEFAULT NULL,
+  `id_type_1` int DEFAULT NULL,
+  `id_mtf` int DEFAULT NULL,
   PRIMARY KEY (`id_pdt`),
   UNIQUE KEY `image` (`image`),
   KEY `id_taille_1` (`id_taille_1`),
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
 DROP TABLE IF EXISTS `taille_pdt`;
 CREATE TABLE IF NOT EXISTS `taille_pdt` (
   `id_taille` int NOT NULL AUTO_INCREMENT,
-  `taille` varchar(3) NOT NULL,
+  `taille` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id_taille`),
   UNIQUE KEY `taille` (`taille`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
