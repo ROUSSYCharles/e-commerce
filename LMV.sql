@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 04 fév. 2024 à 20:47
+-- Généré le : dim. 04 fév. 2024 à 21:21
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -40,7 +40,14 @@ CREATE TABLE IF NOT EXISTS `client` (
   `mdp` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail_clt` (`mail_clt`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `client`
+--
+
+INSERT INTO `client` (`id`, `nom_clt`, `prenom_clt`, `mail_clt`, `adresse`, `cp`, `ville`, `pts_fidelite`, `mdp`) VALUES
+(5, 'Roussy', 'Charles', 'roussy.charles21@gmail.com', NULL, NULL, NULL, NULL, 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527');
 
 -- --------------------------------------------------------
 
