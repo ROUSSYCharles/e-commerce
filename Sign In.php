@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="inscription.css">
-    <script src="inscription.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/mot3_cranevache.png">
     <title>Inscription</title>
 </head>
 
@@ -69,6 +69,8 @@ try {
         <span>2024 - LeMondeEstVache.fr</span>
     </footer>
 
+    <script src="inscription.js"></script>
+
     <?php
 		if (isset($_POST["register"])):
 
@@ -78,11 +80,11 @@ try {
 			$password = hash("sha256", $_POST["password"]);
 
 			//Requête update bdd
-			$QuerySignUp = "INSERT into client(nom_clt, prenom_clt, mail_clt, mdp)
+			$QuerySignIn = "INSERT into client(nom_clt, prenom_clt, mail_clt, mdp)
 			VALUES ('$name', '$surname', '$mail', '$password')";
-			$RecupLog = $mysqlClient->prepare($QuerySignUp);
-			$RecupLog->execute();
+			$SignIn = $mysqlClient->prepare($QuerySignIn);
+			$SignIn->execute();
 		endif;
-		?>
+	?>
 </body>
 </html>

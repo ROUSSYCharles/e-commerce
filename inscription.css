@@ -6,7 +6,7 @@
     image-rendering:optimizeQuality;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-
+  /*position logo*/
 img{
     width: 150px;
     display: block;
@@ -26,7 +26,7 @@ form {
 span{
     font-size: 0.8em;
 }
-
+  /* Style des erreurs*/
 span.error{
   color: red;
 }
