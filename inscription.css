@@ -5,6 +5,7 @@
     padding: 0;
     image-rendering:optimizeQuality;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   }
   /*position logo*/
 img{
@@ -25,6 +26,7 @@ form {
 
 span{
     font-size: 0.8em;
+    font-style: oblique;
 }
   /* Style des erreurs*/
 span.error{
@@ -53,6 +55,7 @@ button{
 
 footer{
     margin-top: 15px;
+    padding-bottom: 0px;
     display: flex;
     justify-content: center;
 }

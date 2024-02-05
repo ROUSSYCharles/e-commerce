@@ -78,7 +78,6 @@ try {
             $surname = $_POST["surname"];
 			$mail = $_POST["mail"];
 			$password = hash("sha256", $_POST["password"]);
-
 			//Requête update bdd
 			$QuerySignIn = "INSERT into client(nom_clt, prenom_clt, mail_clt, mdp)
 			VALUES ('$name', '$surname', '$mail', '$password')";
