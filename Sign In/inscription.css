@@ -1,0 +1,113 @@
+/* Reset des styles par défaut */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+  /* Style du formulaire */
+form{
+  display: block;
+  position: relative;
+  width: 325px;
+  margin: 0 auto;
+  border: 1px solid #3f3f3f;
+  padding: 10px 10px;
+  border-radius: 0.625em;
+  font-size: medium;
+}
+form[name="signin-form"]{
+  display: block;
+}
+
+span{
+  font-size: 0.8em;
+  font-style: oblique;
+}
+  /* Style des erreurs*/
+span.error{
+  color: red;
+}
+  
+  /* Style des champs de saisie */
+input{
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  margin-top: 3px;
+  margin-bottom: 9px;
+  border: 1px solid #9c9c9c;
+  border-radius: 5px;
+  animation-iteration-count: 7;
+}
+
+@keyframes shake-horizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(5px);}
+}
+
+  /* Style du bouton */
+  button[type="submit"]{
+    width: 14em;
+    height: 1.8em;
+    margin: 0.5em;
+    background: rgb(66, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow:hidden;
+   }
+  button[type="submit"]:hover {
+    color: black;
+   }
+   
+   button[type="submit"]:after {
+    content: "";
+    background: rgb(190, 124, 0);
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+   }
+   
+   button[type="submit"]:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+   }
+
+button[id="change-form"]{
+  width: 30%;
+  height: 2em;
+  position:absolute;
+  top : 15px;
+  right : 10px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 3px 0;
+  border: 2px solid black;
+  border-radius: 0.625em;
+  cursor:pointer;
+  transition-property: transform;
+  transition-duration: 400ms;
+}
+button[id="change-form"]:hover{
+  transform: scale(1.05);
+}
+
+footer{
+  margin-top: 15px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+}
