@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require_once("../template.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,16 +9,6 @@
     <link rel="icon" type="image/x-icon" href="../LMEV Motif/mot3_cranevache.png">
     <title>Inscription</title>
 </head>
-
-<?php
-try {
-	// On se connecte à MySQL
-	$mysqlClient = new PDO('mysql:host=localhost:3306;dbname=lmv', 'root', '');
-} catch (Exception $e) {
-	die('Erreur  : ' . $e->getMessage());
-}
-?>
-
 <body oncontextmenu="return false">
 
     <section class="form-sign-in">
@@ -206,6 +196,7 @@ try {
                             <div id="error-message" class="error-message">Bienvenue '.$account['nom_clt']." ".$account['prenom_clt'].'</div>
                         </div>
                     </div>';
+                    echo "<script>alert('Connecté')</script>";
                 }
             }
         }
