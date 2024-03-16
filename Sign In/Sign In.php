@@ -73,7 +73,7 @@
             {
                 foreach($specialChar as $c)
                 {
-                    if($v == $c && ($key !== "password") && $key !== 'confirmPassword')
+                    if($v == $c && ($key !== "password" && $key !== 'confirmPassword' && $key !== 'login-password'))
                     {
                         return true;
                     }
@@ -155,6 +155,7 @@
         <?php
         if(isset($_POST["login"]) && !filter_var($_POST['login-mail'], FILTER_VALIDATE_EMAIL) && verifChar() == false)
         {
+            var_dump($_POST);
             $loginMail = htmlspecialchars($_POST["login-mail"], ENT_QUOTES, 'UTF-8');
             $loginPassword = $_POST["login-password"];
 
@@ -196,13 +197,12 @@
                             <div id="error-message" class="error-message">Bienvenue '.$account['nom_clt']." ".$account['prenom_clt'].'</div>
                         </div>
                     </div>';
-                    echo "<script>alert('Connecté')</script>";
                 }
             }
         }
         ?>
-    <script src="inscription.js"></script>
-    <script src="../verifChar.js"></script>
+    <!--<script src="inscription.js"></script>
+    <script src="../verifChar.js"></script>-->
     <script src="../popup.js"></script>
 </body>
 </html>
