@@ -29,6 +29,16 @@ span{
 span.error{
   color: red;
 }
+
+.passwordStrength{
+  border: none;
+  border-radius: 0.5em;
+  padding: 4px;
+  span[id="charPassword"]{
+    font-style: normal;
+  }
+}
+
   
   /* Style des champs de saisie */
 input{

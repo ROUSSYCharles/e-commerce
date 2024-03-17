@@ -1,4 +1,7 @@
-<?php require_once("../template.php"); ?>
+<?php
+require_once("../template.php");
+require_once("functions.php");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,9 +46,11 @@
 
             <label for="password">Mot de passe</label>
             <div class="input">
-                <input type="password" id="password" name = "password" onkeypress="verifChar(event)" placeholder="Au moins 8 caractères" data-error-for="passwordError">
+                <input type="password" id="password" name = "password" onkeypress="verifChar(event)" oninput="passwordStrength(this.value)" placeholder="Au moins 12 caractères" data-error-for="passwordError">
                 <span id="passwordError" class="error"></span>
-                <span id="charPassword"> Les mots de passe doivent au moins avoir 8 caractères.</span>
+                <div class="passwordStrength" id="passwordStrength">
+                    <span id="charPassword"></span>
+                </div>
             </div>
 
             <label for="confirmPassword">Entrez le mot de passe à nouveau</label>
@@ -62,28 +67,9 @@
     </section>
     
     <?php
-    function verifChar()
-    {
-        $specialStr = "<>/&|`\"'*";
-        $specialChar = str_split($specialStr);
-        foreach($_POST as $key => $value)
-        {
-            $valueChar = str_split($value);
-            foreach($valueChar as $v)
-            {
-                foreach($specialChar as $c)
-                {
-                    if($v == $c && ($key !== "password" && $key !== 'confirmPassword' && $key !== 'login-password'))
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-    }
     try
     {
-        if(isset($_POST["register"]) && filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL) && verifChar() == false)
+        if(isset($_POST["register"]) && !empty($_POST['name']) && !empty($_POST['surname']) && filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL) && validChar() && ($_POST['password'] == $_POST['confirmPassword']) && passwordStrength())
         {
             $name = strtoupper(htmlspecialchars($_POST["name"], ENT_QUOTES, 'UTF-8'));
             $surname = htmlspecialchars($_POST["surname"], ENT_QUOTES, 'UTF-8');
@@ -153,12 +139,10 @@
         </section>
 
         <?php
-        if(isset($_POST["login"]) && !filter_var($_POST['login-mail'], FILTER_VALIDATE_EMAIL) && verifChar() == false)
+        if(isset($_POST["login"]) && filter_var($_POST['login-mail'], FILTER_VALIDATE_EMAIL) && validChar())
         {
-            var_dump($_POST);
             $loginMail = htmlspecialchars($_POST["login-mail"], ENT_QUOTES, 'UTF-8');
             $loginPassword = $_POST["login-password"];
-
             $emailCheck = $mysqlClient->prepare("SELECT COUNT(*) AS emailCount FROM client WHERE mail_clt='$loginMail'");
             $emailCheck -> execute();
             $emailCheck = $emailCheck -> fetch();
@@ -175,7 +159,7 @@
                 $passwordCheck = $mysqlClient->prepare("SELECT mdp FROM client WHERE mail_clt='$loginMail'");
                 $passwordCheck -> execute();
                 $passwordCheck = $passwordCheck -> fetch();
-                if(password_verify($loginPassword, $passwordCheck['mdp'])){
+                if(!password_verify($loginPassword, $passwordCheck['mdp'])){
                     echo
                     '<div id="popup" class="popup">
                         <div class="popup-content">
@@ -184,10 +168,10 @@
                     </div>';
                 }
                 else {
+                    $loginPassword = $passwordCheck['mdp'];
                     $account = $mysqlClient->prepare("SELECT * FROM client WHERE mail_clt = '$loginMail' AND mdp = '$loginPassword'");
                     $account -> execute();
                     $account = $account -> fetch();
-
                     $_SESSION['id'] = $account['id'];
                     $_SESSION['mail_clt'] = $account['mail_clt'];
 
@@ -201,8 +185,8 @@
             }
         }
         ?>
-    <!--<script src="inscription.js"></script>
-    <script src="../verifChar.js"></script>-->
+    <script src="inscription.js"></script>
+    <script src="../verifChar.js"></script>
     <script src="../popup.js"></script>
 </body>
 </html>
