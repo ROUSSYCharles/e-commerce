@@ -1,9 +1,16 @@
-document.getElementById("change-form").addEventListener("click",function(){
+document.getElementById("login-change-form").addEventListener("click",function(){
     var signInFormStyle = document.querySelector("form[name='signin-form'").style;
     var loginFormStyle = document.querySelector("form[name='login-form'").style;
 
     signInFormStyle.display = "block";
     loginFormStyle.display = "none";
+});
+document.getElementById("change-form").addEventListener("click",function(){
+    var signInFormStyle = document.querySelector("form[name='signin-form'").style;
+    var loginFormStyle = document.querySelector("form[name='login-form'").style;
+
+    signInFormStyle.display = "none";
+    loginFormStyle.display = "block";
 });
 
 function passwordStrength(password){

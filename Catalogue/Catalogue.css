@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.catalogue{
+    display: inline-block;
+    margin: 2em 4.5em auto;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.catalogue:hover{
+    transform: scale(1.1);
+}
+
+.motif{
+}
+
+.catalogue img {
+    image-rendering: optimizeQuality;
+    width: 500px; 
+    height: 500px; 
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}

@@ -4,21 +4,23 @@
     margin: 0;
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 1;
 
   }
   /* Style du formulaire */
 form{
   display: block;
   position: relative;
-  width: 325px;
-  margin: 0 auto;
+  width: 20em;
+  margin: 5em auto;
   border: 1px solid #3f3f3f;
   padding: 10px 10px;
   border-radius: 0.625em;
   font-size: medium;
+  background-color: white;
 }
 form[name="signin-form"]{
-  display: block;
+  display: none;
 }
 
 span{
@@ -70,7 +72,7 @@ input{
     font-weight: bold;
     cursor: pointer;
     position: relative;
-    z-index: 1;
+
     overflow:hidden;
    }
   button[type="submit"]:hover {
@@ -80,8 +82,9 @@ input{
    button[type="submit"]:after {
     content: "";
     background: rgb(190, 124, 0);
-    position: absolute;
     z-index: -1;
+    position: absolute;
+
     left: -20%;
     right: -20%;
     top: 0;
@@ -96,7 +99,7 @@ input{
     transition: all 0.5s;
    }
 
-button[id="change-form"]{
+button[name="change-form"]{
   width: 30%;
   height: 2em;
   position:absolute;
@@ -111,13 +114,6 @@ button[id="change-form"]{
   transition-property: transform;
   transition-duration: 400ms;
 }
-button[id="change-form"]:hover{
+button[name="change-form"]:hover{
   transform: scale(1.05);
-}
-
-footer{
-  margin-top: 15px;
-  padding-bottom: 0px;
-  display: flex;
-  justify-content: center;
 }

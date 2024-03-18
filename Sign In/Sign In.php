@@ -1,5 +1,5 @@
 <?php
-require_once("../template.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/template.php");
 require_once("functions.php");
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,8 @@ require_once("functions.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="inscription.css">
-    <link rel="stylesheet" href="../popup.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/e-commerce/Template.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/e-commerce/popup.css">
     <link rel="icon" type="image/x-icon" href="../LMEV Motif/mot3_cranevache.png">
     <title>Inscription</title>
 </head>
@@ -17,6 +18,9 @@ require_once("functions.php");
     <section class="form-sign-in">
         <form method="post" id="signin-form" name="signin-form">
             <h1>Créer un compte</h1>
+            <div class="button">
+                <button type="button" id="change-form" name="change-form" value="change-form">Se connecter</button>
+            </div>
             <label for="name">Votre nom</label>
             <div class="input">
                 <input type="text" id="name" name = "name" onkeypress="verifChar(event)" placeholder="Nom" data-error-for="nameError">
@@ -108,7 +112,7 @@ require_once("functions.php");
             <form method="post" id="login-form" name="login-form">
                 <h1>Connexion</h1>
                 <div class="button">
-                    <button type="button" id="change-form" name="change-form" value="change-form">S'inscrire</button>
+                    <button type="button" id="login-change-form" name="change-form" value="login-change-form">S'inscrire</button>
                 </div>
 
                 <label for="mail">Adresse e-mail</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 04 fév. 2024 à 21:21
+-- Généré le : lun. 18 mars 2024 à 00:57
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -37,17 +37,17 @@ CREATE TABLE IF NOT EXISTS `client` (
   `cp` int DEFAULT NULL,
   `ville` varchar(50) DEFAULT NULL,
   `pts_fidelite` int DEFAULT NULL,
-  `mdp` varchar(50) DEFAULT NULL,
+  `mdp` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail_clt` (`mail_clt`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`id`, `nom_clt`, `prenom_clt`, `mail_clt`, `adresse`, `cp`, `ville`, `pts_fidelite`, `mdp`) VALUES
-(5, 'Roussy', 'Charles', 'roussy.charles21@gmail.com', NULL, NULL, NULL, NULL, 'ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527');
+(105, 'ROUSSY', 'Charles', 'roussy.charles21@gmail.com', NULL, NULL, NULL, NULL, '$2y$12$m0IIJrp.aoM3UPk4FmJ1cefXitA66LqbQaHV27VdWEgfQBzNWXZFS');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `id` int NOT NULL,
   PRIMARY KEY (`numero_com`),
   KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `commande_produit` (
   `quantite` int DEFAULT NULL,
   PRIMARY KEY (`numero_com`,`id_pdt`),
   KEY `id_pdt` (`id_pdt`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -95,10 +95,23 @@ CREATE TABLE IF NOT EXISTS `motifs` (
   `id_mtf` int NOT NULL AUTO_INCREMENT,
   `nom_mtf` varchar(50) DEFAULT NULL,
   `image` varchar(50) DEFAULT NULL,
+  `catalogue` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_mtf`),
   UNIQUE KEY `nom_mtf` (`nom_mtf`),
   UNIQUE KEY `image` (`image`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `motifs`
+--
+
+INSERT INTO `motifs` (`id_mtf`, `nom_mtf`, `image`, `catalogue`) VALUES
+(1, 'punkachat', 'mot1_punkachat.jfif', 1),
+(2, 'voiture', 'mot2_voiture.jfif', 1),
+(3, 'cranevache', 'mot3_cranevache.png', 1),
+(4, 'poseurEncre', 'mot4_poseurEncre.jpg', 1),
+(5, 'goldenpub', 'mot5_goldenpub.jfif', 1),
+(6, 'madeinFr', 'mot6_madeinFr.jfif', 0);
 
 -- --------------------------------------------------------
 
@@ -125,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
   KEY `id_taille_1` (`id_taille_1`),
   KEY `id_type_1` (`id_type_1`),
   KEY `id_mtf` (`id_mtf`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -139,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `taille_pdt` (
   `taille` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id_taille`),
   UNIQUE KEY `taille` (`taille`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -153,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `type_pdt` (
   `type` varchar(50) NOT NULL,
   PRIMARY KEY (`id_type`),
   UNIQUE KEY `type` (`type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
