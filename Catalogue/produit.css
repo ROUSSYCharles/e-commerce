@@ -1,0 +1,57 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.motif{
+    display: block;
+    position:relative;
+    margin: 5em auto;
+    padding: 1em;
+    padding-bottom: 0;
+    width: 60em;
+    border-radius: 0.625em;
+    background-color: #cccccc6e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.motif img {
+    image-rendering: optimizeQuality;
+    width: 25em;
+    height: 30em;
+    border: 2px solid #ccc;
+    border-radius: 0.625em;
+}
+
+.description{
+    display: block;
+    position: relative;
+    width: 19.7em;
+    left: 26em;
+    top:-30.5em;
+    overflow: hidden;
+    h2{
+        border-bottom: 2px solid black;
+        color: white;
+    }
+}
+
+label{
+    position: relative;
+    margin: 4em auto;
+    top : 5px;
+    font-weight: bold;
+    font-size: larger;
+}
+select{
+    position: relative;
+    text-align: center;
+    width: 5.6em;
+    margin: 1em auto;
+    border: 2px solid black;
+    border-radius: 0.625em;
+}
+select[id="type"]{
+    width: 13em;
+}
