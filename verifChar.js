@@ -1,3 +1,4 @@
+// Empêche la saisie des caractères spéciaux présents dans la variable specialChar
 function verifChar(event) { 		
     var keyCode = event.which ? event.which : event.keyCode;
     var touche = String.fromCharCode(keyCode);
@@ -24,5 +25,5 @@ function verifChar(event) {
 }
 document.addEventListener('paste', function(event)
 {
-    event.preventDefault();
+    event.preventDefault(); // Empêche de coller (un caractère spécial par exemple)
 });

@@ -13,6 +13,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");?>
 </head>
 <body oncontextmenu="return false">
     <?php
+    // On récupère les motifs qui doivent être présents dans le catalogue
     $Motifs = $mysqlClient->prepare("SELECT * FROM motifs WHERE catalogue = 1");
     $Motifs->execute();
     $resultats = $Motifs->fetchAll();
@@ -21,11 +22,13 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");?>
         foreach ($resultats as $m) {
             // URL vers les images
             $imageURL = "../LMEV Motif/" . $m['image'];
+            // Chiffrement de l'id du motif qui passera dans l'url pour afficher la page produit.php
             $encryptedId = encrypt_id($m['id_mtf']);
     ?>
             
             <div class="catalogue">
                 <div class="motif">
+                    <? // Renvoie vers la page contenant les produits liés au motif?>
                     <a href="produit.php?id=<?php echo  urlencode($encryptedId); ?>">
                         <img src="<?php echo $imageURL; ?>" alt="<?php echo $m['nom_mtf']; ?>">
                     </a>
@@ -33,7 +36,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");?>
             </div>
     <?php
         }
-    } else {
+    } else { // Aucun motif
         echo "Aucun motif trouvé.";
     }
     ?>

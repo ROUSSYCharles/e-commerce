@@ -20,6 +20,9 @@
 	<title>LMEV</title>
 </head>
 <body>
+	<?php	// Nav Bar -> Les boutons renvoient vers la page correspondante en cherchant le chemin de la page depuis la racine
+			// 	   -> Le bouton permettant d'aller vers la page dans laquelle l'utilisateur se trouve n'est plus affiché
+	?>
 	<nav>
 		<li><a href = "http://<?php echo $_SERVER['HTTP_HOST']; ?>/e-commerce/Catalogue/catalogue.php"<?php if(basename($_SERVER['PHP_SELF']) == 'catalogue.php') { echo ' style="display:none;"'; }?>>Catalogue</a></li>
 		<li><a href = "#Promotions">Promotions</a></li>

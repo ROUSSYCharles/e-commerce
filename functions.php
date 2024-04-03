@@ -1,17 +1,20 @@
 <?php
+// Fonction permettant d'éviter les injections de code
 function validChar()
 {
+    // regex avec les caractères spéciaux
     $specialChar = "/[<>\/&|`\"'*]/";
     foreach($_POST as $key => $value)
     {
         if(($key !== "password" && $key !== 'confirmPassword' && $key !== 'login-password') && preg_match($specialChar, $value))
         {
-            return false;
+            return false; // une des valeur contient un des caractères présent dans le regex
         }
     }
-    return true;
+    return true; // aucun caractère spécial du regex n'est présent
 }
 
+// Force du mdp lors de l'inscription
 function passwordStrength()
 {
     $passwordChars = ["/[a-z]/", "/[A-Z]/", "/\d/", "/[!@#$%^()_+\-=\[\]{};:\\,.?]+/"];
@@ -23,16 +26,17 @@ function passwordStrength()
             $strength ++;
         }
     }
-    if($strength && strlen($_POST['password']) >= 12)
+    if($strength != 0 && strlen($_POST['password']) >= 12)
     {
-        return true;
+        return true; // le mdp contient les différents types de char du regex et contient 12 char minimum
     }
     else
     {
-        return false;
+        return false; // mdp trop faible
     }
 }
 
+// Chiffrement de l'id des motifs qui passe dans l'URL dans la page produit.php
 function encrypt_id($id){
     $key = "FarfadetMalicieux";
     $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
@@ -42,6 +46,7 @@ function encrypt_id($id){
     return base64_encode($iv . $encrypted_id); // Encodage base64
 }
 
+// Déchiffrement
 function decrypt_id($encrypted_id) {
     $key = "FarfadetMalicieux";
     // Décodage base64
@@ -54,6 +59,7 @@ function decrypt_id($encrypted_id) {
     return $decrypted_id;
 }
 
+// Vérif si un produit est présent dans le panier
 function produitInPanier($id_pdt) {
     if(isset($_SESSION['panier'])) {
         foreach($_SESSION['panier'] as $produit) {

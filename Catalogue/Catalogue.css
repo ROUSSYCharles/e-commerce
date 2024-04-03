@@ -1,12 +1,13 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.catalogue{
+
+.catalogue {
     display: inline-block;
-    margin: 2em 4.5em auto;
+    margin: 2em auto; /* Ajustement de la marge pour le centrage */
     width: 200px;
     height: 200px;
     margin-right: 20px;
@@ -14,14 +15,33 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
-.catalogue:hover{
+
+.catalogue:hover {
     transform: scale(1.1);
 }
 
 .catalogue img {
     image-rendering: optimizeQuality;
-    width: 200px; 
-    height: 200px; 
+    width: 100%; /* Ajustement de la largeur à 100% */
+    height: auto; /* Hauteur automatique pour maintenir les proportions */
     border: 2px solid #ccc;
     border-radius: 0.625em;
+}
+
+/* Media queries pour différents points de rupture */
+
+@media screen and (max-width: 768px) {
+    .catalogue {
+        width: calc(50% - 10px); /* Deux éléments par ligne */
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .catalogue {
+        width: 100%; /* Un élément par ligne sur les petits écrans */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }

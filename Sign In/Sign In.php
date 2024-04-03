@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
     <title>Inscription</title>
 </head>
 <body oncontextmenu="return false">
-
+<? // Formulaire d'inscription ?>
     <section class="form-sign-in">
         <form method="post" id="signin-form" name="signin-form">
             <h1>Créer un compte</h1>
@@ -69,12 +69,14 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
             <span> En créant un compte, vous acceptez les conditions de vente du Monde Est Vache.</span>
         </form>
     </section>
-    
+    <? // Fin formulaire d'inscription ?>
     <?php
     try
     {
+        // Insertion des données entrées dans la BDD
         if(isset($_POST["register"]) && !empty($_POST['name']) && !empty($_POST['surname']) && filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL) && validChar() && ($_POST['password'] == $_POST['confirmPassword']) && passwordStrength())
         {
+            // htmlspecialchars convertie les caractères en entités html pour éviter attaques XSS
             $name = strtoupper(htmlspecialchars($_POST["name"], ENT_QUOTES, 'UTF-8'));
             $surname = htmlspecialchars($_POST["surname"], ENT_QUOTES, 'UTF-8');
             $mail = htmlspecialchars($_POST["mail"], ENT_QUOTES, 'UTF-8');
@@ -107,7 +109,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
         }
     }
 	?>
-
+<? // Formulaire de connexion ?>
     <section class="login-form">
             <form method="post" id="login-form" name="login-form">
                 <h1>Connexion</h1>
@@ -147,10 +149,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
         {
             $loginMail = htmlspecialchars($_POST["login-mail"], ENT_QUOTES, 'UTF-8');
             $loginPassword = $_POST["login-password"];
+            // Verif si l'email saisie est présent dans la BDD
             $emailCheck = $mysqlClient->prepare("SELECT COUNT(*) AS emailCount FROM client WHERE mail_clt='$loginMail'");
             $emailCheck -> execute();
             $emailCheck = $emailCheck -> fetch();
-            if($emailCheck['emailCount'] != 1)
+            if($emailCheck['emailCount'] != 1) // si l'adresse email saisie n'est pas dans la BDD
             {
                 echo
                 '<div id="popup" class="popup">
@@ -159,11 +162,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
                     </div>
                 </div>';
             }
-            else{
+            else{ // Si email dans BDD on vérifie si le mdp correspond au compte lié à l'email saisie
                 $passwordCheck = $mysqlClient->prepare("SELECT mdp FROM client WHERE mail_clt='$loginMail'");
                 $passwordCheck -> execute();
                 $passwordCheck = $passwordCheck -> fetch();
-                if(!password_verify($loginPassword, $passwordCheck['mdp'])){
+                if(!password_verify($loginPassword, $passwordCheck['mdp'])){ // mdp invalide
                     echo
                     '<div id="popup" class="popup">
                         <div class="popup-content">
@@ -171,14 +174,16 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
                         </div>
                     </div>';
                 }
-                else {
+                else { // Connexion
                     $loginPassword = $passwordCheck['mdp'];
                     $account = $mysqlClient->prepare("SELECT * FROM client WHERE mail_clt = '$loginMail' AND mdp = '$loginPassword'");
                     $account -> execute();
                     $account = $account -> fetch();
+                    // Variables de session
                     $_SESSION['id'] = $account['id'];
                     $_SESSION['mail_clt'] = $account['mail_clt'];
 
+                    // Msg de bienvenue pour confirmer la connexion
                     echo
                     '<div id="popup" class="popup">
                         <div class="popup-content">
@@ -189,6 +194,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
             }
         }
         ?>
+        
     <script src="inscription.js"></script>
     <script src="../verifChar.js"></script>
     <script src="../popup.js"></script>

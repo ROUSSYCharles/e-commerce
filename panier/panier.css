@@ -5,26 +5,30 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
 .motif img {
     image-rendering: optimizeQuality;
-    width: 7em;
-    height: 7em;
+    width: 8em;
+    height: 8em;
     border: 2px solid #ccc;
     border-radius: 0.625em;
 }
 
 table {
     margin-top: 1em;
-    display: flex;
+    display: flexbox;
     position: relative;
     justify-content: center;
-    border: 1px solid black;
-    left: 18em;
-    width: 60%;
+    border: 2px solid black;
+    border-radius: 0.625em;
+    width: 90%; /* Changement de la largeur pour s'adapter à l'écran */
+    max-width: 100%; /* Empêcher le dépassement du contenu de la table */
+    overflow-x: auto; /* Ajout de la barre de défilement horizontale si nécessaire */
+    margin-left: auto; /* Centre l'élément à gauche */
+    margin-right: auto; /* Centre l'élément à droite */
 }
 
 td, th {
+    position: relative;
     padding: 0.5em;
     text-align: center;
 }
@@ -34,8 +38,8 @@ td[colspan]{
 }
 
 button {
-    height: auto;
-    width: 104%;
+    height: 3em;
+    width: 90%; /* Ajustement de la largeur à 100% */
     border: 2px solid black;
     border-radius: 0.625em;
     cursor: pointer;
@@ -45,4 +49,12 @@ button {
 
 button:hover {
     transform: scale(1.05);
+}
+
+/* Media queries pour différents points de rupture */
+
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%; /* Pour les écrans de taille moyenne, la table prend 100% de la largeur */
+    }
 }

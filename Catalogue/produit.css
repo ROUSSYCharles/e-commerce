@@ -11,7 +11,8 @@
     margin: 5em auto;
     padding: 1em;
     padding-bottom: 0;
-    width: 77em;
+    width: 100%; /* Ajustement de la largeur à 100% */
+    max-width: 77em; /* Limite la largeur maximale */
     border-radius: 0.625em;
     background-color: #cccccc6e;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,7 +56,7 @@ td, th {
 }
 
 button {
-    height: 2em;
+    height: auto;
     width: 104%;
     border: 2px solid black;
     border-radius: 0.625em;

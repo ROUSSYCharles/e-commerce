@@ -1,3 +1,4 @@
+// Changement de formulaire quand on clique sur le bouton en haut à droite du formulaire
 document.getElementById("login-change-form").addEventListener("click",function(){
     var signInFormStyle = document.querySelector("form[name='signin-form'").style;
     var loginFormStyle = document.querySelector("form[name='login-form'").style;
@@ -13,6 +14,7 @@ document.getElementById("change-form").addEventListener("click",function(){
     loginFormStyle.display = "block";
 });
 
+// Verif si le mdp est fort
 function passwordStrength(password){
     var strength = 0;
     var tips = "";
@@ -49,7 +51,7 @@ function passwordStrength(password){
       tips += "Ajoutez au moins un caractère spécial. ";
     }
   
-    // Return
+    // Affichage éléments manquant pour que le mdp soit fort et Return
     if (strength < 2) {
         strengthPasswordStr.innerHTML = "Mot de passe faible.<br>" + tips;
         strengthPasswordStyle.backgroundColor = passwordInputStyle.backgroundColor = "rgba(253, 61, 61, 0.700)";
@@ -67,6 +69,7 @@ function passwordStrength(password){
     return isStrong;
 }
 
+// gestion style des input lors des erreurs
 function inputErrorStyle(element){
     element.style.border = "1px solid red";
     element.style.backgroundColor = "rgb(248, 136, 136, 0.712)";
@@ -79,6 +82,9 @@ function resetErrorStyle(element){
 
 var signInForm = document.getElementById("signin-form");
 var loginForm = document.getElementById("login-form");
+
+// Msg d'erreurs sur le formulaire d'inscriptions si champs vide ou mdp et mdp de confirmation différents
+// Empêche l'envoie du formulaire si une erreur se produit
 signInForm.addEventListener("submit", function(event)
 {
     var name = document.getElementById("name").value;
@@ -161,6 +167,7 @@ signInForm.addEventListener("submit", function(event)
     }
 });
 
+// Idem pour le formulaire de connexion
 loginForm.addEventListener("submit", function(event)
 {
     

@@ -1,6 +1,29 @@
 <?php
 require_once("../template.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
+
+// Si l'utilsateur veut supprimé un produit du panier
+if(isset($_POST['del_panier']))
+{
+    // Verifie si le panier n'est pas vide
+    if(!empty($_SESSION['panier']))
+    {
+        $index = $_POST['index_pdt'];
+        // Suppression du produit
+        unset($_SESSION['panier'][$index - 1]);
+
+        // Confirmation
+        echo
+        '<div id="popup" class="popup">
+            <div class="popup-content">
+                <div id="error-message" class="error-message">Produit supprimé.</div>
+            </div>
+        </div>';
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit();
+    }
+}
+
 ?>
 
 <html lang="fr">
@@ -18,7 +41,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
 <?php
 // Vérifie si le panier existe dans la session et n'est pas vide
 if(isset($_SESSION['panier']) && !empty($_SESSION['panier'])) { 
-    // Parcours du panier pour afficher chaque produit
+    // Parcours du panier pour afficher chaque produit dans un tableau
 ?>
 <div class="panier">
     <table>
@@ -95,24 +118,16 @@ if(isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
         
 
 <?php
-} else {
-    echo "Le panier est vide.";
-}
-
-if(isset($_POST['del_panier']))
-{
-    if(!empty($_SESSION['panier']))
-    {
-        unset($_SESSION['panier'][$index]);
-
-        echo
-        '<div id="popup" class="popup">
-            <div class="popup-content">
-                <div id="error-message" class="error-message">Produit supprimé.</div>
-            </div>
-        </div>';
-    }
+} else { // panier vide
+    echo
+    '<div id="popup" class="popup">
+        <div class="popup-content">
+            <div id="error-message" class="error-message">Panier vide.</div>
+        </div>
+    </div>';
 }
 ?>
+
+<script src="../popup.js"></script>
 </body>
 </html>
