@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/template.php");
 </head>
 <body>
     <div>
-        
+        <h1>Accueil</h1>
     </div>
 </body>
 </html>
