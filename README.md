@@ -18,8 +18,7 @@ Sign In :
   
   Catalogue :  
     Catalogue.php -> Affiche les différents motifs disponibles,  
-                     cliquer sur un motif nous renvoie à la page produit.php avec les produits liés à ce motif  
-                       
+                     cliquer sur un motif nous renvoie à la page produit.php avec les produits liés à ce motif             
     Produit.php -> Affiche une liste des produits liés au motif et permet d'ajouter le produit choisis au panier grâce à une variable de session  
 
 panier -> Affiche la liste des produits dans le panier et permet de supprimer un produit du panier  
