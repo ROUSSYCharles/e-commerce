@@ -189,8 +189,8 @@ loginForm.addEventListener("submit", function(event)
         loginPasswordError.innerHTML = "Veuillez saisir votre mot de passe.";
         inputErrorStyle(document.getElementById("login-password"));
         event.preventDefault();
-    } else if (password.length < 8) {
-        loginPasswordError.innerHTML = "8 caractères requis.";
+    } else if (password.length < 12) {
+        loginPasswordError.innerHTML = "12 caractères requis.";
         inputErrorStyle(document.getElementById("login-password"));
         event.preventDefault();
     }
