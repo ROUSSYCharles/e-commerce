@@ -1,46 +1,49 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-body{
+body {
   background-color: #252525;
+  margin: 0;
+  padding-bottom: 2.5rem; /* Ajoute un espace en bas pour le footer */
 }
 
 nav {
-list-style-type: none;
-margin: 0;
-padding: 0;
-overflow: hidden;
-background-color: #1a1a1a;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1a1a1a;
 }
 
 li {
-float: left;
+  float: left;
 }
 
 li a {
-display: block;
-color: white;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-}
-li a:hover {
-background-color: #111;
-color:rgb(218, 141, 0);
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-footer{
-  position: absolute;
+li a:hover {
+  background-color: #111;
+  color: rgb(218, 141, 0);
+}
+
+footer {
+  display: block;
+  position:fixed;
+  bottom: 0;
   width: 100%;
   height: 2.5rem;
   text-align: center;
   background-color: #1a1a1a;
   color: #fff;
-  max-width: 100%;
-  margin: 100vh auto;
-  padding: 10px 0 30px
+  padding: 10px 0;
 }

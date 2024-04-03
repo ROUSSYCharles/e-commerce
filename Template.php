@@ -27,7 +27,7 @@
 		<li><a href = "http://<?php echo $_SERVER['HTTP_HOST']; ?>/e-commerce/home_page/home_page.php"<?php if(basename($_SERVER['PHP_SELF']) == 'home_page.php') { echo ' style="display:none;"'; } ?>>Accueil</a></li>
 		<li><a href = "http://<?php echo $_SERVER['HTTP_HOST']; ?>/e-commerce/Sign In/Sign In.php"<?php if(basename($_SERVER['PHP_SELF']) == 'Sign In.php') { echo ' style="display:none;"'; } ?>>Connexion</a></li>
 
-		<li><a href = "#Panier">Panier</a></li>
+		<li><a href = "http://<?php echo $_SERVER['HTTP_HOST']; ?>/e-commerce/panier/panier.php"<?php if(basename($_SERVER['PHP_SELF']) == 'panier.php') { echo ' style="display:none;"'; } ?>>Panier</a></li>
 		<li><a href = "#Profil">Profil</a></li>
 	</nav>
 

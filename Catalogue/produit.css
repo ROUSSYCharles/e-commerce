@@ -1,8 +1,8 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .motif{
@@ -11,11 +11,12 @@
     margin: 5em auto;
     padding: 1em;
     padding-bottom: 0;
-    width: 60em;
+    width: 77em;
     border-radius: 0.625em;
     background-color: #cccccc6e;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .motif img {
     image-rendering: optimizeQuality;
     width: 25em;
@@ -24,27 +25,58 @@
     border-radius: 0.625em;
 }
 
-.description{
-    display: block;
-    position: relative;
-    width: 19.7em;
-    left: 26em;
-    top:-30.5em;
-    overflow: hidden;
-    h2{
-        border-bottom: 2px solid black;
-        color: white;
-    }
+.description {
+    position: absolute;
+    bottom: 14.87em; /* Aligner le bas de la description avec le bas de l'image */
+    border-radius: 0.5rem;
+    left: 27.25em;
+    padding: 0.5em;
+    background-color: rgba(0, 0, 0, 0.678); /* Fonds semi-transparent pour une meilleure lisibilité */
+    color: white;
 }
 
-label{
+h2 {
+    border-bottom: 2px solid black;
+    color: white;
+}
+
+table {
+    margin-top: 1em;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    border: 1px solid black;
+    width: 100%;
+}
+
+td, th {
+    padding: 0.5em;
+    text-align: center;
+}
+
+button {
+    height: 2em;
+    width: 104%;
+    border: 2px solid black;
+    border-radius: 0.625em;
+    cursor: pointer;
+    transition-property: transform;
+    transition-duration: 400ms;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+label {
     position: relative;
     margin: 4em auto;
-    top : 5px;
+    top: 5px;
     font-weight: bold;
     font-size: larger;
 }
-select{
+
+select {
     position: relative;
     text-align: center;
     width: 5.6em;
@@ -52,6 +84,7 @@ select{
     border: 2px solid black;
     border-radius: 0.625em;
 }
-select[id="type"]{
+
+select[id="type"] {
     width: 13em;
 }

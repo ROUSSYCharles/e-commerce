@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.motif img {
+    image-rendering: optimizeQuality;
+    width: 7em;
+    height: 7em;
+    border: 2px solid #ccc;
+    border-radius: 0.625em;
+}
+
+table {
+    margin-top: 1em;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    border: 1px solid black;
+    left: 18em;
+    width: 60%;
+}
+
+td, th {
+    padding: 0.5em;
+    text-align: center;
+}
+
+td[colspan]{
+    border-top: 1px solid black;
+}
+
+button {
+    height: auto;
+    width: 104%;
+    border: 2px solid black;
+    border-radius: 0.625em;
+    cursor: pointer;
+    transition-property: transform;
+    transition-duration: 400ms;
+}
+
+button:hover {
+    transform: scale(1.05);
+}

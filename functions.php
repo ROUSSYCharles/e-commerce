@@ -53,3 +53,14 @@ function decrypt_id($encrypted_id) {
     $decrypted_id = openssl_decrypt($encrypted_id, 'aes-256-cbc', $key, 0, $iv);
     return $decrypted_id;
 }
+
+function produitInPanier($id_pdt) {
+    if(isset($_SESSION['panier'])) {
+        foreach($_SESSION['panier'] as $produit) {
+            if($produit['id_pdt'] == $id_pdt) {
+                return true; // Le produit est présent dans le panier
+            }
+        }
+    }
+    return false; // Le produit n'est pas présent dans le panier
+}

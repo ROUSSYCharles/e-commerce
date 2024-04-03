@@ -13,6 +13,8 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/template.php");
     <title>Accueil</title>
 </head>
 <body>
-    Accueil
+    <div>
+        
+    </div>
 </body>
 </html>
