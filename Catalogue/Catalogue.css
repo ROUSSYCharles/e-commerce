@@ -22,8 +22,8 @@
 
 .catalogue img {
     image-rendering: optimizeQuality;
-    width: 100%; /* Ajustement de la largeur à 100% */
-    height: auto; /* Hauteur automatique pour maintenir les proportions */
+    width: 12em; /* Ajustement de la largeur à 100% */
+    height: 12em; /* Hauteur automatique pour maintenir les proportions */
     border: 2px solid #ccc;
     border-radius: 0.625em;
 }

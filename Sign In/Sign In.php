@@ -181,7 +181,9 @@ require_once($_SERVER['DOCUMENT_ROOT']."/e-commerce/functions.php");
                     $account = $account -> fetch();
                     // Variables de session
                     $_SESSION['id'] = $account['id'];
-                    $_SESSION['mail_clt'] = $account['mail_clt'];
+                    $_SESSION['admin'] = $account['admin'];
+
+                    var_dump($_SESSION['admin']);
 
                     // Msg de bienvenue pour confirmer la connexion
                     echo
