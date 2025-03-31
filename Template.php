@@ -3,7 +3,7 @@
 
 	try {
 		// On se connecte à MySQL
-		$mysqlClient = new PDO('mysql:host=localhost:3306;dbname=lmv', 'root', '');
+		$mysqlClient = new PDO('mysql:host=HOST:PORT;dbname=DB_NAME', 'USER', 'PASSWORD');
 	} catch (Exception $e) {
 		die('Erreur  : ' . $e->getMessage());
 	}
